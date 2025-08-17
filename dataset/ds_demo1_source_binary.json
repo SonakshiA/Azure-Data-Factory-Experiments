@@ -1,0 +1,22 @@
+{
+	"name": "ds_demo1_source_binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_st_stage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "demo1"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "egypt.txt",
+				"container": "demo1-source"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

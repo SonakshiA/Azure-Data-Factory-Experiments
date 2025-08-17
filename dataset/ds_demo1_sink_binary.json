@@ -1,0 +1,22 @@
+{
+	"name": "ds_demo1_sink_binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_st_stage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "demo1"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "copied_data.txt",
+				"container": "demo1-sink"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

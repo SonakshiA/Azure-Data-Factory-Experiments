@@ -1,0 +1,30 @@
+{
+	"name": "trg_tutorial004_demo1_schedule",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_tutorial004_demo1_wait_30_seconds",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "pl_tutorial004_demo1_wait_360_seconds",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 5,
+				"startTime": "2025-08-16T15:27:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

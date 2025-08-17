@@ -1,0 +1,22 @@
+{
+	"name": "ds_tutorial006_demo1_blob_gen_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_st_stage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "tutorial006"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "egypt.txt",
+				"container": "tutorial006-source"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

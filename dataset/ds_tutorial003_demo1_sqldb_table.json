@@ -1,0 +1,33 @@
+{
+	"name": "ds_tutorial003_demo1_sqldb_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sqldb_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "tutorial003"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LOCATION",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "tutorial003_sink",
+			"table": "azure"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

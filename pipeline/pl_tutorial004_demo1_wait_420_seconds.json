@@ -1,0 +1,22 @@
+{
+	"name": "pl_tutorial004_demo1_wait_420_seconds",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait 420 seconds",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 420
+				}
+			}
+		],
+		"folder": {
+			"name": "tutorial004"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-08-16T15:44:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

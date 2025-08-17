@@ -1,0 +1,11 @@
+{
+	"name": "ls_st_stage",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://azdftststagedemo.blob.core.windows.net"
+		}
+	}
+}

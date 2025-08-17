@@ -1,0 +1,76 @@
+{
+	"name": "pl_tutorial007_demo1_if_condition",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Sunday",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Set current_timestamp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(0,dayOfWeek(variables('current_timestamp')))",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Not Sunday",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 1
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "Sunday",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 1
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set current_timestamp",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "current_timestamp",
+					"value": {
+						"value": "@addDays(utcNow(),1)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"current_timestamp": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "tutorial007"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-08-17T13:46:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

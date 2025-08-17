@@ -1,0 +1,17 @@
+{
+	"name": "azdft-adf-demo",
+	"properties": {
+		"globalParameters": {
+			"environment": {
+				"type": "string",
+				"value": "demo"
+			}
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "be8e93fc-25d9-4cbb-a823-bab1ee83041b",
+		"tenantId": "e96d477c-5be6-480c-8c26-87b151c39652"
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"name": "trg_tutorial004_demo1_storage",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_tutorial004_demo1_wait_60_seconds",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/tutorial004-trigger-file/blobs/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/ea86e4d9-1558-4b5f-8117-6b5b1dffdd84/resourceGroups/azdft-rg-demo/providers/Microsoft.Storage/storageAccounts/azdftststagedemo",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

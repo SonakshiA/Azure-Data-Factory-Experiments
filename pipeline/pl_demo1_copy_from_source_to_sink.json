@@ -1,0 +1,58 @@
+{
+	"name": "pl_demo1_copy_from_source_to_sink",
+	"properties": {
+		"activities": [
+			{
+				"name": "copy data from source to sink",
+				"description": "Copy data from egypt.txt source file to a new file in the sink.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_demo1_source_binary",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_demo1_sink_binary",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "demo1"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-08-16T11:00:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

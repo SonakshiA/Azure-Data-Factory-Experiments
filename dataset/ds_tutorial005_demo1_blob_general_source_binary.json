@@ -1,0 +1,30 @@
+{
+	"name": "ds_tutorial005_demo1_blob_general_source_binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_st_stage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "tutorial005"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"container": "tutorial005-source"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

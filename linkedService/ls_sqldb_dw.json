@@ -1,0 +1,15 @@
+{
+	"name": "ls_sqldb_dw",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "azdft-sql-internal-demo.database.windows.net",
+			"database": "azdft-sqldb-dw-demo",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SystemAssignedManagedIdentity"
+		}
+	}
+}

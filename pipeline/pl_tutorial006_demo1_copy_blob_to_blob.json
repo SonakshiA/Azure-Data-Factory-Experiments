@@ -1,0 +1,63 @@
+{
+	"name": "pl_tutorial006_demo1_copy_blob_to_blob",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy file from blob to blob",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_tutorial006_demo1_blob_gen_source",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_tutorial006_demo1_blob_gen_sink",
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": {
+								"value": "@concat('file_',utcNow('yyyyMMDDTHHmmssZ'),'.txt')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "tutorial006"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-08-17T13:46:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

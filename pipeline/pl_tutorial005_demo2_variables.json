@@ -1,0 +1,92 @@
+{
+	"name": "pl_tutorial005_demo2_variables",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "variable1",
+					"value": {
+						"value": "@pipeline().DataFactory",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "variable2",
+					"value": "some text here"
+				}
+			},
+			{
+				"name": "Set variable3",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "variable3",
+					"value": {
+						"value": "@pipeline().parameters.parameter1",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"parameter1": {
+				"type": "string",
+				"defaultValue": "parameter value to variable"
+			}
+		},
+		"variables": {
+			"variable1": {
+				"type": "String"
+			},
+			"variable2": {
+				"type": "String"
+			},
+			"variable3": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "tutorial005"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-08-17T11:04:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
