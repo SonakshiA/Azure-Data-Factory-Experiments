@@ -793,41 +793,36 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trg_tutorial004_demo1_schedule')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
+			"name": "[concat(parameters('factoryName'), '/ds_tutorial009_demo1_sqldb_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sqldb_dw",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "tutorial009"
+				},
 				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [
+				"type": "AzureSqlTable",
+				"schema": [
 					{
-						"pipelineReference": {
-							"referenceName": "pl_tutorial004_demo1_wait_30_seconds",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
+						"name": "src_file",
+						"type": "nvarchar"
 					},
 					{
-						"pipelineReference": {
-							"referenceName": "pl_tutorial004_demo1_wait_360_seconds",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
+						"name": "dst_table",
+						"type": "nvarchar"
 					}
 				],
-				"type": "ScheduleTrigger",
 				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 5,
-						"startTime": "2025-08-16T15:27:00",
-						"timeZone": "India Standard Time"
-					}
+					"schema": "tutorial009_configuration",
+					"table": "configuration_table"
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pl_tutorial004_demo1_wait_30_seconds')]",
-				"[concat(variables('factoryId'), '/pipelines/pl_tutorial004_demo1_wait_360_seconds')]"
+				"[concat(variables('factoryId'), '/linkedServices/ls_sqldb_dw')]"
 			]
 		}
 	]

@@ -788,6 +788,81 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/pl_tutorial009_demo1_lookup_activity')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Lookup sql table",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "ds_tutorial009_demo1_sqldb_table",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEach row in configuration",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Lookup sql table",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Lookup sql table').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Wait1",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "tutorial009"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_tutorial009_demo1_sqldb_table')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pl_tutoriall005_demo1_copy_from_source_to_sink_blob')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1207,6 +1282,39 @@
 						"value": "@dataset().table_name",
 						"type": "Expression"
 					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sqldb_dw')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_tutorial009_demo1_sqldb_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sqldb_dw",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "tutorial009"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "src_file",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dst_table",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "tutorial009_configuration",
+					"table": "configuration_table"
 				}
 			},
 			"dependsOn": [
