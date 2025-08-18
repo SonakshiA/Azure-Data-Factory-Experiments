@@ -1,0 +1,27 @@
+{
+	"name": "ds_tutorial008_demo1_general_sqldb_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sqldb_dw",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "tutorial008"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "tutorial008_sink",
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
+	}
+}
