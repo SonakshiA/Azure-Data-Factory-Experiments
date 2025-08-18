@@ -1,0 +1,39 @@
+{
+	"name": "ds_tutorial010_demo1_blob_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_st_stage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "tutorial010"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "azure.csv",
+				"container": "tutorial010-source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "NAME",
+				"type": "String"
+			},
+			{
+				"name": "TYPE",
+				"type": "String"
+			},
+			{
+				"name": "LOCATION",
+				"type": "String"
+			}
+		]
+	}
+}
