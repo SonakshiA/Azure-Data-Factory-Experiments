@@ -1,0 +1,28 @@
+{
+	"name": "ds_tutorial009_demo1_sqldb_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sqldb_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "tutorial009"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "src_file",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dst_table",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "tutorial009_configuration",
+			"table": "configuration_table"
+		}
+	}
+}
