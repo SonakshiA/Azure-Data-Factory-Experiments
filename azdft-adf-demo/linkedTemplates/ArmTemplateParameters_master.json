@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "azdft-adf-demo"
+		},
+		"ls_sqldb_dw_properties_typeProperties_server": {
+			"value": "azdft-sql-internal-demo.database.windows.net"
+		},
+		"ls_sqldb_dw_properties_typeProperties_database": {
+			"value": "azdft-sqldb-dw-demo"
+		},
+		"ls_st_stage_properties_typeProperties_serviceEndpoint": {
+			"value": "https://azdftststagedemo.blob.core.windows.net"
+		},
+		"trg_tutorial004_demo1_storage_properties_typeProperties_scope": {
+			"value": "/subscriptions/ea86e4d9-1558-4b5f-8117-6b5b1dffdd84/resourceGroups/azdft-rg-demo/providers/Microsoft.Storage/storageAccounts/azdftststagedemo"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
